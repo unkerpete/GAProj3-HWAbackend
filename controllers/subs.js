@@ -37,7 +37,12 @@ const createSubscription = async (req, res, next) => {
 
 // 4. Function for updating events
 
-// 5. Function for deleting (one event at a time)
+// 5. Function for deleting (one event at a time) i.e. unsubscribe
+// const unsubscribe = async (req, res) => {
+//   try {
+//     // expect unsub email to be provided
+//   } catch {}
+// };
 
 // To export the functions to router
 module.exports = { createSubscription };
