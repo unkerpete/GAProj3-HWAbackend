@@ -7,6 +7,6 @@ const SubsSchema = new mongoose.Schema(
   { collection: "subscriptions" }
 );
 
-const Subs = mongoose.models("Subs", SubsSchema);
+const Subs = mongoose.model("Subs", SubsSchema);
 
 module.exports = Subs;
