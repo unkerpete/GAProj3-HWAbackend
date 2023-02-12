@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("../backend/db/db");
+
+// import the routes from the different routers
 // const appointments = require("../backend/router/appointments");
 // const users = require("../backend/router/users");
 
@@ -13,8 +15,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 connectDB(process.env.MONGODB_URI);
 
-app.use("/appt", appointments);
-app.use("/users", users);
+// app.use("/appt", appointments);
+// app.use("/users", users);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
