@@ -11,6 +11,9 @@ const homeCareEnquirySchema = new mongoose.Schema(
   { collection: "home", timestamps: true }
 );
 
-const HomeCareEnquiry = mongoose.model("HomeCareEnquiry", subscriptionSchema);
+const HomeCareEnquiry = mongoose.model(
+  "HomeCareEnquiry",
+  homeCareEnquirySchema
+);
 
 module.exports = HomeCareEnquiry;
