@@ -6,6 +6,7 @@ const connectDB = require("./db/db");
 
 // import the routes from the different routers
 const subs = require("./router/subs");
+const User = require("./router/users");
 const transport = require("./router/transport");
 const homecare = require("./router/homecare");
 const volunteer = require("./router/volunteer");
@@ -25,6 +26,7 @@ app.use("/homecare", homecare);
 app.use("/volunteer", volunteer);
 app.use("/contact", contact);
 app.use("/image", image);
+app.use("/admin", User);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
