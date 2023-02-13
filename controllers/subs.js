@@ -34,15 +34,15 @@ const createSubscription = async (req, res, next) => {
 };
 
 // 3. Function for reading all
-
-// 4. Function for updating events
-
-// 5. Function for deleting (one event at a time) i.e. unsubscribe
-// const unsubscribe = async (req, res) => {
-//   try {
-//     // expect unsub email to be provided
-//   } catch {}
-// };
+const showSubscriptions = async (req, res) => {
+  try {
+    const allSubsResults = await Subs.find().sort({ createdAt: 1 });
+    res.json(allSubsResults);
+  } catch (err) {
+    console.log("GET /subs/showall ", err);
+    res.status(400).json({ status: "error", message: err.message });
+  }
+};
 
 // To export the functions to router
-module.exports = { createSubscription };
+module.exports = { createSubscription, showSubscriptions };
