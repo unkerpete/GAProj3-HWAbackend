@@ -24,7 +24,7 @@ const createUser = async (req, res) => {
     console.log("Created User: " + createUser);
     res.json({ status: "success", message: "user created successfully" });
   } catch (err) {
-    console.log("PUT /users/create", err);
+    console.log("PUT /admin/create", err);
     res.status(400).json({ status: "error", message: "an error has occurred" });
   }
 };
@@ -64,13 +64,25 @@ const login = async (req, res) => {
     const response = { access, refresh };
     res.json(response);
   } catch (err) {
-    console.log("POST /users/login", err);
+    console.log("POST /admin/login", err);
     res
       .status(400)
       .json({ status: "error", message: "username/password issue" });
   }
 };
 
-// 3.
+// 3. Function to display all users
+const getUsers = async (req, res) => {
+  try {
+    const allUsers = await Users.find().select("username");
 
-module.exports = { createUser, login };
+    // check if there are any users in the first place
+
+    res.json(allUsers);
+  } catch (err) {
+    console.log("GET /admin/allusers", err);
+    res.json({ status: "error", message: "unable to get list of users" });
+  }
+};
+
+module.exports = { createUser, login, getUsers };
