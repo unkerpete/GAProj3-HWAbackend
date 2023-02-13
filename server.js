@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 require("dotenv").config();
 
 const express = require("express");
@@ -21,13 +20,3 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
-=======
-import { useState } from "react";
-import "./App.css";
-
-function App() {
-  return <div className="App">Hello Team</div>;
-}
-
-export default App;
->>>>>>> main
