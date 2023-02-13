@@ -11,6 +11,6 @@ const TransportSchema = new mongoose.Schema(
   { collection: "transport", timestamps: true }
 );
 
-const Transport = new mongoose.model("Transport", EnquirySchema);
+const Transport = new mongoose.model("Transport", TransportSchema);
 
 module.exports = Transport;

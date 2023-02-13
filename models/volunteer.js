@@ -11,6 +11,6 @@ const VolunteerSchema = new mongoose.Schema(
   { collection: "volunteer", timestamps: true }
 );
 
-const Volunteer = new mongoose.model("Volunteer", EnquirySchema);
+const Volunteer = new mongoose.model("Volunteer", VolunteerSchema);
 
 module.exports = Volunteer;
