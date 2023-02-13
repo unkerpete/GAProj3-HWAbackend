@@ -10,6 +10,7 @@ const transport = require("./router/transport");
 const homecare = require("./router/homecare");
 const volunteer = require("./router/volunteer");
 const contact = require("./router/contact");
+const image = require("./router/image");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use("/transport", transport);
 app.use("/homecare", homecare);
 app.use("/volunteer", volunteer);
 app.use("/contact", contact);
+app.use("/image", image);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
