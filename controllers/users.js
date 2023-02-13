@@ -29,8 +29,48 @@ const createUser = async (req, res) => {
   }
 };
 
-// 2. Function for updating user details
+// 2. Function for login
+const login = async (req, res) => {
+  try {
+    const user = await Users.findOne({ username: req.body.username });
+    if (!user) {
+      return res
+        .status(400)
+        .json({ status: "error", message: "username/password issue" });
+    }
+    // Encrypt the password coming with the same encryption factors as the one in CREATE then compare
+    const result = await bcrypt.compare(req.body.password, user.hash);
+    if (!result) {
+      return res
+        .status(401)
+        .json({ status: "error", message: "username/password issue" });
+    }
+
+    const payload = {
+      id: user._id,
+      username: user.username,
+    };
+
+    const access = jwt.sign(payload, process.env.ACCESS_SECRET, {
+      expiresIn: "60m",
+      jwtid: uuidv4(),
+    });
+
+    const refresh = jwt.sign(payload, process.env.REFRESH_SECRET, {
+      expiresIn: "30D",
+      jwtid: uuidv4(),
+    });
+
+    const response = { access, refresh };
+    res.json(response);
+  } catch (err) {
+    console.log("POST /users/login", err);
+    res
+      .status(400)
+      .json({ status: "error", message: "username/password issue" });
+  }
+};
 
 // 3.
 
-module.exports = { createUser };
+module.exports = { createUser, login };
