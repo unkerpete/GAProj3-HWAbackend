@@ -5,10 +5,10 @@ const VolunteerSchema = new mongoose.Schema(
     fullName: { type: String, required: true },
     email: { type: String, required: true },
     contact: { type: Number, required: true }, // requires frontend to verify or convert to number
-    type: { type: String, required: true },
+    company: { type: String, required: true },
     message: { type: String, required: true },
   },
-  { collection: "volunteer" }
+  { collection: "volunteer", timestamps: true }
 );
 
 const Volunteer = new mongoose.model("Volunteer", EnquirySchema);

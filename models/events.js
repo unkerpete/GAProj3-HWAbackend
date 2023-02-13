@@ -6,8 +6,8 @@ const EventsSchema = new mongoose.Schema(
     date: { type: Date, required: true },
     dateEnd: { type: Date },
     start: { type: Date, required: true },
-    end: { type: Date, required: true },
-    description: { type: Date, required: true },
+    end: { type: Date },
+    description: { type: String, required: true },
     img: { type: String }, // TODO: modify to binary format
     action: { type: String },
     tag: { type: String },
