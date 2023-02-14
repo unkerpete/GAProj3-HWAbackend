@@ -45,6 +45,7 @@ const createEvent = async (req, res) => {
     res.status(400).json({ status: "error", message: error.message });
   }
 };
+
 // 3. Function for reading all, sorted by date of event
 const getAllEvents = async (req, res) => {
   try {
@@ -92,6 +93,7 @@ const getEventsByTagAndDateRange = async (req, res) => {
   }
 };
 
+// FIXME: need to update for img
 // 6. Function for updating events
 const updateEvent = async (req, res) => {
   try {
@@ -104,7 +106,11 @@ const updateEvent = async (req, res) => {
       event.dateEnd = req.body.dateEnd;
       event.timeString = req.body.timeString;
       event.description = req.body.description;
-      event.img = req.body.img;
+      // FIXME: NEED TO DOUBLE CHECK THIS FROM FRONT END
+      event.img = {
+        data: fs.readFileSync("uploads/" + req.file.filename),
+        contentType: "image/jpg",
+      };
       event.action = req.body.action;
       event.tag = req.body.tag;
     }

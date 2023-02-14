@@ -50,7 +50,7 @@ router.get("/showbyrange", getEventsByDateRange);
 router.get("/showbytagrange", getEventsByTagAndDateRange);
 
 // UPDATE event by ID
-router.patch("/update", updateEvent);
+router.patch("/update", upload.single("eventImg"), updateEvent);
 
 // DELETE event by ID
 router.delete("/delete", deleteEvent);
