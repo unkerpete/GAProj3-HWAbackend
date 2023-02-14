@@ -2,10 +2,27 @@
 const Events = require("../models/events");
 
 const moment = require("moment-timezone");
+// For handling of images
+const multer = require("multer");
+const fs = require("fs");
 
 // 1. Function for seeding
 
 // 2. Function for creating
+
+const storage = multer.diskStorage({
+  // declare the destination for the file in client side
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  // file name saved as the original file name when uploaded
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
+
+// Include middleware inside createEvent
 const createEvent = async (req, res) => {
   try {
     const newEvent = new Events({
