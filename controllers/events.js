@@ -106,7 +106,7 @@ const updateEvent = async (req, res) => {
       event.dateEnd = req.body.dateEnd;
       event.timeString = req.body.timeString;
       event.description = req.body.description;
-      // FIXME: NEED TO DOUBLE CHECK THIS FROM FRONT END
+      // FIXME: NEED TO DOUBLE CHECK THIS FROM FRONT END. POSTMAN WORKS
       event.img = {
         data: fs.readFileSync("uploads/" + req.file.filename),
         contentType: "image/jpg",
