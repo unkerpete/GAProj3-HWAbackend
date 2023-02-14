@@ -3,7 +3,18 @@ const Events = require("../models/events");
 
 const moment = require("moment-timezone");
 
+const eventsList = require("../Seeds/eventSeeds");
+
 // 1. Function for seeding
+const seedEvents = async (req, res) => {
+  try {
+    await Events.deleteMany();
+    await Events.create(eventsList);
+    res.json({ status: "ok", message: "re-seeded successfully" });
+  } catch (err) {
+    res.json({ status: "failed", message: err });
+  }
+};
 
 // 2. Function for creating
 const createEvent = async (req, res) => {
@@ -40,7 +51,7 @@ const getAllEvents = async (req, res) => {
   }
 };
 
-// 3. Function for reading a specified number of events based on date range
+// 4. Function for reading a specified number of events based on date range
 const getEventsByDateRange = async (req, res) => {
   try {
     const startDate = new Date(req.body.startDate);
@@ -57,7 +68,7 @@ const getEventsByDateRange = async (req, res) => {
   }
 };
 
-// 3. Function for reading a specified number of events based on date range AND tag
+// 5. Function for reading a specified number of events based on date range AND tag
 const getEventsByTagAndDateRange = async (req, res) => {
   try {
     const startDate = new Date(req.body.startDate);
@@ -75,7 +86,7 @@ const getEventsByTagAndDateRange = async (req, res) => {
   }
 };
 
-// 4. Function for updating events
+// 6. Function for updating events
 const updateEvent = async (req, res) => {
   try {
     const event = await Events.findById(req.body.id);
@@ -94,10 +105,10 @@ const updateEvent = async (req, res) => {
     const updatedEvent = await event.save();
     res.json({ message: "Event updated successfully", event: updatedEvent });
   } catch (error) {
-    res.json(error);
+    console.log(error.message);
   }
 };
-// 5. Function for deleting (one event at a time)
+// 7. Function for deleting (one event at a time)
 const deleteEvent = async (req, res) => {
   try {
     const event = await Events.findById(req.body.id);
@@ -111,12 +122,61 @@ const deleteEvent = async (req, res) => {
     res.json(error);
   }
 };
+
+// 8. Function for Current Events. Can select by multiple tags
+const getCurrentEventsWithinDateRangeByCategory = async (req, res) => {
+  const today = new Date();
+  const daysFromNow = new Date();
+  daysFromNow.setDate(today.getDate() + parseInt(req.body.daysFromNow));
+
+  const tag = req.body.tag || [];
+  try {
+    const events = await Events.find({
+      dateStart: { $gte: today, $lte: daysFromNow },
+      tag: { $in: tag },
+    });
+    if (!events) {
+      res.json({
+        message: "no events of selected tag in the next 3 days",
+      });
+    }
+    res.json(events);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+// 9. Function for Upcoming Events. Can select multiple tags
+const getUpcomingEventsAfterCurrentEventsByCategory = async (req, res) => {
+  const daysFromNow = new Date();
+  daysFromNow.setDate(today.getDate() + parseInt(req.body.daysFromNow));
+
+  const tag = req.body.tag || [];
+  try {
+    const events = await Events.find({
+      dateStart: { $lte: daysFromNow },
+      category: { $in: tag },
+    });
+    if (!events) {
+      res.json({
+        message: "no events of selected tag after 3 days from now",
+      });
+    }
+    res.json(events);
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
 // To export the functions to router
 module.exports = {
+  seedEvents,
   createEvent,
   getAllEvents,
   getEventsByDateRange,
   getEventsByTagAndDateRange,
   updateEvent,
   deleteEvent,
+  getCurrentEventsWithinDateRangeByCategory,
+  getUpcomingEventsAfterCurrentEventsByCategory,
 };

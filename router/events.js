@@ -2,15 +2,22 @@
 const express = require("express");
 // import router
 const router = express.Router();
+
 // import functions from controller
 const {
+  seedEvents,
   createEvent,
   getAllEvents,
   getEventsByDateRange,
   getEventsByTagAndDateRange,
   updateEvent,
   deleteEvent,
+  getCurrentEventsWithinDateRangeByCategory,
+  getUpcomingEventsAfterCurrentEventsByCategory,
 } = require("../controllers/events");
+
+// CREATE SEED events data. This will delete all events and create default list of events
+router.put("/danger_this_deletes_everything", seedEvents);
 
 // CREATE a single event
 router.put("/create", createEvent);
@@ -25,10 +32,16 @@ router.get("/showbyrange", getEventsByDateRange);
 router.get("/showbytagrange", getEventsByTagAndDateRange);
 
 // UPDATE event by ID
-router.patch("/showbytagrange", updateEvent);
+router.patch("/update", updateEvent);
 
 // DELETE event by ID
 router.delete("/delete", deleteEvent);
+
+// READ current events by category(ies)
+router.get("/currentevents", getCurrentEventsWithinDateRangeByCategory);
+
+// READ upcoming events by category(ies)
+router.get("/upcomingevents", getUpcomingEventsAfterCurrentEventsByCategory);
 
 // export routes for server.js to access
 module.exports = router;
