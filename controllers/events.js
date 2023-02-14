@@ -126,8 +126,8 @@ const deleteEvent = async (req, res) => {
 // 8. Function for Current Events. Can select by multiple tags
 const getCurrentEventsWithinDateRangeByCategory = async (req, res) => {
   const today = new Date();
-  const daysFromNow = new Date();
-  daysFromNow.setDate(today.getDate() + parseInt(req.body.daysFromNow));
+  const withinTheseDays = new Date();
+  withinTheseDays.setDate(today.getDate() + parseInt(req.body.withinTheseDays));
 
   const tag = req.body.tag || [];
   try {
@@ -148,8 +148,9 @@ const getCurrentEventsWithinDateRangeByCategory = async (req, res) => {
 
 // 9. Function for Upcoming Events. Can select multiple tags
 const getUpcomingEventsAfterCurrentEventsByCategory = async (req, res) => {
-  const daysFromNow = new Date();
-  daysFromNow.setDate(today.getDate() + parseInt(req.body.daysFromNow));
+  const today = new Date();
+  const afterTheseDays = new Date();
+  afterTheseDays.setDate(today.getDate() + parseInt(req.body.afterTheseDays));
 
   const tag = req.body.tag || [];
   try {
