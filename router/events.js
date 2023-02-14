@@ -25,7 +25,7 @@ router.get("/showbyrange", getEventsByDateRange);
 router.get("/showbytagrange", getEventsByTagAndDateRange);
 
 // UPDATE event by ID
-router.patch("/showbytagrange", updateEvent);
+router.patch("/update", updateEvent);
 
 // DELETE event by ID
 router.delete("/delete", deleteEvent);
