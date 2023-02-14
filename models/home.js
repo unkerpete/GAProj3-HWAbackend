@@ -4,7 +4,7 @@ const homeCareEnquirySchema = new mongoose.Schema(
   {
     fullName: { type: String, required: true },
     email: { type: String, required: true },
-    contactNumber: { type: String, required: true },
+    contact: { type: String, required: true },
     service: { type: String },
     message: { type: String, required: true },
   },
