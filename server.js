@@ -4,6 +4,12 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./db/db");
 
+//////////(ADD IMAGE TO MONGODB) import multer and imageModel
+const multer = require("multer");
+const fs = require("fs");
+const imageModel = require("./models/imageModel");
+//////////////////////////////////////////////////////
+
 // import the routes from the different routers
 const subs = require("./router/subs");
 const User = require("./router/users");
@@ -18,6 +24,45 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 connectDB(process.env.MONGODB_URI);
+
+//////////(ADD IMAGE TO MONGODB) Creating DiskStore for
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+//////////////////////////////////////////////////////
+//////////(ADD IMAGE TO MONGODB) Creating App.post
+app.post("/", upload.single("testImage"), (req, res) => {
+  const saveImage = new imageModel({
+    name: req.body.name,
+    img: {
+      data: fs.readFileSync("uploads/" + req.file.filename),
+      contentType: "image/jpg",
+    },
+  });
+  saveImage
+    .save()
+    .then((res) => {
+      console.log("image is saved");
+    })
+    .catch((err) => {
+      console.log(err, "error has occur");
+    });
+  res.send("image is saved");
+});
+//////////////////////////////////////////////////////
+//////////(ADD IMAGE TO MONGODB) Creating App.get all data
+app.get("/", async (req, res) => {
+  const allData = await imageModel.find();
+  res.json(allData.map((data) => ({ name: data.name, img: data.img })));
+});
+//////////////////////////////////
 
 app.use("/subs", subs);
 app.use("/transport", transport);
