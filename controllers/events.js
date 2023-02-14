@@ -154,7 +154,7 @@ const getUpcomingEventsAfterCurrentEventsByCategory = async (req, res) => {
   const tag = req.body.tag || [];
   try {
     const events = await Events.find({
-      dateStart: { $lte: daysFromNow },
+      dateStart: { $gt: daysFromNow },
       category: { $in: tag },
     });
     if (!events) {
