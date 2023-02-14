@@ -12,6 +12,7 @@ const homecare = require("./router/homecare");
 const volunteer = require("./router/volunteer");
 const contact = require("./router/contact");
 const image = require("./router/image");
+const events = require("./router/events");
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use("/homecare", homecare);
 app.use("/volunteer", volunteer);
 app.use("/contact", contact);
 app.use("/image", image);
+app.use("/events", events);
 app.use("/admin", User);
 
 const PORT = process.env.PORT || 5001;
