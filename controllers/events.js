@@ -28,10 +28,12 @@ const createEvent = async (req, res) => {
     res.json(error);
   }
 };
-// 3. Function for reading all
+// 3. Function for reading all, sorted by date of event
 const getAllEvents = async (req, res) => {
   try {
-    const events = await Events.find({});
+    const events = await Events.find({}).sort({
+      dateStart: -1,
+    });
     res.json({ events });
   } catch (error) {
     res.json(error);
@@ -45,6 +47,8 @@ const getEventsByDateRange = async (req, res) => {
     const endDate = new Date(req.body.endDate);
     const events = await Events.find({
       dateStart: { $gte: startDate, $lte: endDate },
+    }).sort({
+      dateStart: -1,
     });
 
     res.json({ events });
@@ -61,6 +65,8 @@ const getEventsByTagAndDateRange = async (req, res) => {
     const events = await Events.find({
       tag: req.body.tag,
       dateStart: { $gte: startDate, $lte: endDate },
+    }).sort({
+      dateStart: -1,
     });
 
     res.json({ events });
@@ -79,7 +85,7 @@ const updateEvent = async (req, res) => {
       event.title = req.body.title;
       event.dateStart = req.body.dateStart;
       event.dateEnd = req.body.dateEnd;
-      event.timeString = req.body.time;
+      event.timeString = req.body.timeString;
       event.description = req.body.description;
       event.img = req.body.img;
       event.action = req.body.action;
@@ -94,7 +100,7 @@ const updateEvent = async (req, res) => {
 // 5. Function for deleting (one event at a time)
 const deleteEvent = async (req, res) => {
   try {
-    const event = await Events.findById(req.params.id);
+    const event = await Events.findById(req.body.id);
     if (!event) {
       return res.json({ status: "not found", message: "Event not found" });
     }
