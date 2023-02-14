@@ -2,14 +2,33 @@
 const express = require("express");
 // import router
 const router = express.Router();
-
-// import middleware if any
-
 // import functions from controller
-// const {} = require("../controllers/events");
+const {
+  createEvent,
+  getAllEvents,
+  getEventsByDateRange,
+  getEventsByTagAndDateRange,
+  updateEvent,
+  deleteEvent,
+} = require("../controllers/events");
 
-// create routes
-// router.get('/all', insert function name here)
+// CREATE a single event
+router.put("/create", createEvent);
+
+// READ show all events
+router.get("/showall", getAllEvents);
+
+// READ show events within a specified date range
+router.get("/showbyrange", getEventsByDateRange);
+
+// READ show events within a specified date range
+router.get("/showbytagrange", getEventsByTagAndDateRange);
+
+// UPDATE event by ID
+router.patch("/showbytagrange", updateEvent);
+
+// DELETE event by ID
+router.delete("/delete", deleteEvent);
 
 // export routes for server.js to access
 module.exports = router;

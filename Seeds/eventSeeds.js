@@ -1,9 +1,9 @@
 const eventsList = [
   {
     title: "Garden of Hope - Flower planting",
-    date: "19 Feb 2023",
-    start: "9:00 am",
-    end: "11:00 am",
+    dateStart: "19 Feb 2023",
+    dateEnd: "19 Feb 2023 2:30 PM",
+    timeString: "11:00AM to 2:30PM",
     description: "Lorem ipsum dolor sit amet",
     img: "Lorem ipsum dolor sit",
     action: "Lorem Link",
@@ -11,9 +11,9 @@ const eventsList = [
   },
   {
     title: "Medical Talk - Essential Caregiving Skills",
-    date: "21 Feb 2023",
-    start: "9:00 am",
-    end: "11:00 am",
+    dateStart: "21 Feb 2023",
+    dateEnd: "21 feb 2023 9:00 am",
+    timeString: "11:00 am",
     description: "Lorem ipsum dolor sit amet",
     img: "Lorem ipsum dolor sit",
     action: "Lorem Link",
@@ -21,10 +21,9 @@ const eventsList = [
   },
   {
     title: "Seniors Go Digital",
-    date: "21 Feb 2023",
+    dateStart: "21 Feb 2023",
     dateEnd: "23 Feb 2023",
-    start: "9:00 am",
-    end: "5:30 pm",
+    timeString: "9:00 am to 10:30am",
     description: "Lorem ipsum dolor sit amet",
     img: "Lorem ipsum dolor sit",
     action: "Lorem Link",
