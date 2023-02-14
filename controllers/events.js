@@ -4,6 +4,7 @@ const Events = require("../models/events");
 const moment = require("moment-timezone");
 
 const eventsList = require("../Seeds/eventSeeds");
+const fs = require("fs");
 
 // 1. Function for seeding
 const seedEvents = async (req, res) => {
@@ -25,18 +26,23 @@ const createEvent = async (req, res) => {
       dateEnd: req.body.dateEnd,
       timeString: req.body.timeString,
       description: req.body.description,
-      img: req.body.img,
+      img: {
+        data: fs.readFileSync("uploads/" + req.file.filename),
+        contentType: "image/jpg",
+      },
       action: req.body.action,
       tag: req.body.tag,
     });
 
     const savedEvent = await newEvent.save();
+    console.log("image saved");
     res.json({
       message: "Event created successfully",
       createdEvent: savedEvent,
     });
   } catch (error) {
-    res.json(error);
+    console.log("PUT /events/create", error);
+    res.status(400).json({ status: "error", message: error.message });
   }
 };
 // 3. Function for reading all, sorted by date of event

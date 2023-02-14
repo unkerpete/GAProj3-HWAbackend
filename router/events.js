@@ -16,11 +16,29 @@ const {
   getUpcomingEventsAfterCurrentEventsByCategory,
 } = require("../controllers/events");
 
+////////////////////////////
+// Handling Image Events
+const multer = require("multer");
+// const Events = require("../models/events");
+
+const storage = multer.diskStorage({
+  // declare the destination for the file in client side
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  // file name saved as the original file name when uploaded
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage: storage });
+////////////////////////////////////////////////////////////////////////
+
 // CREATE SEED events data. This will delete all events and create default list of events
 router.put("/danger_this_deletes_everything", seedEvents);
 
 // CREATE a single event
-router.put("/create", createEvent);
+router.put("/create", upload.single("eventImg"), createEvent);
 
 // READ show all events
 router.get("/showall", getAllEvents);
