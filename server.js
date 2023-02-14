@@ -26,10 +26,13 @@ app.use(express.urlencoded({ extended: false }));
 connectDB(process.env.MONGODB_URI);
 
 //////////(ADD IMAGE TO MONGODB) Creating DiskStore for
+// TODO: THIS PORTION IS IMPORTANT!!!
 const storage = multer.diskStorage({
+  // declare the destination for the file in client side
   destination: (req, file, cb) => {
     cb(null, "uploads");
   },
+  // file name saved as the original file name when uploaded
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
@@ -38,6 +41,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 //////////////////////////////////////////////////////
 //////////(ADD IMAGE TO MONGODB) Creating App.post
+// TODO: THIS PORTION IS IMPORTANT!!!
 app.post("/", upload.single("testImage"), (req, res) => {
   const saveImage = new imageModel({
     name: req.body.name,
@@ -58,6 +62,8 @@ app.post("/", upload.single("testImage"), (req, res) => {
 });
 //////////////////////////////////////////////////////
 //////////(ADD IMAGE TO MONGODB) Creating App.get all data
+// TODO: THIS PORTION IS IMPORTANT!!!
+
 app.get("/", async (req, res) => {
   const allData = await imageModel.find();
   res.json(allData.map((data) => ({ name: data.name, img: data.img })));
