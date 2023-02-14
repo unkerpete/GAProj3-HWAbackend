@@ -7,7 +7,7 @@ const createHomeCareEnquiry = async (req, res) => {
     const newHomeCareEnq = await HomeCareEnquiry.create({
       fullName: req.body.fullName,
       email: req.body.email,
-      contactNumber: req.body.contactNumber,
+      contact: req.body.contact,
       service: req.body.service,
       message: req.body.message,
     });
