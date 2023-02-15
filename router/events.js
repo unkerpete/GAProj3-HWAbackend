@@ -45,7 +45,7 @@ router.put("/create", upload.single("eventImg"), createEvent);
 router.get("/showall", getAllEvents);
 
 // READ show events within a specified date range
-router.get("/showbyrange", getEventsByDateRange);
+router.post("/showbyrange", getEventsByDateRange);
 
 // READ show events within a specified date range
 router.get("/showbytagrange", getEventsByTagAndDateRange);

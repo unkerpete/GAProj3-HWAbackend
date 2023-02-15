@@ -22,6 +22,7 @@ const createSubscription = async (req, res, next) => {
     res.json({
       status: "success",
       message: "user has been added to subscription list",
+      newsub: newSub,
     });
   } catch (err) {
     console.log("PUT /subs/create ", err);
