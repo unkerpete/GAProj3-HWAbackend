@@ -36,7 +36,8 @@ const createEvent = async (req, res) => {
       createdEvent: savedEvent,
     });
   } catch (error) {
-    res.json(error);
+
+    console.log(error);
   }
 };
 // 3. Function for reading all, sorted by date of event
