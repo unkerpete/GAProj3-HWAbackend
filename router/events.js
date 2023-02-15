@@ -38,10 +38,10 @@ router.patch("/update", updateEvent);
 router.delete("/delete", deleteEvent);
 
 // READ current events by category(ies)
-router.get("/currentevents", getCurrentEventsWithinDateRangeByCategory);
+router.post("/currentevents", getCurrentEventsWithinDateRangeByCategory);
 
 // READ upcoming events by category(ies)
-router.get("/upcomingevents", getUpcomingEventsAfterCurrentEventsByCategory);
+router.post("/upcomingevents", getUpcomingEventsAfterCurrentEventsByCategory);
 
 // export routes for server.js to access
 module.exports = router;

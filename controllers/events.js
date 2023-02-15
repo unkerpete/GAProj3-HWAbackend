@@ -36,7 +36,6 @@ const createEvent = async (req, res) => {
       createdEvent: savedEvent,
     });
   } catch (error) {
-
     console.log(error);
   }
 };
@@ -135,13 +134,16 @@ const getCurrentEventsWithinDateRangeByCategory = async (req, res) => {
     const events = await Events.find({
       dateStart: { $gte: today, $lte: withinTheseDays },
       tag: { $in: tag },
+    }).sort({
+      dateStart: 1,
     });
     if (!events) {
       res.json({
         message: "no events of selected tag in the next 3 days",
       });
+      console.log("error");
     }
-    res.json(events);
+    res.json({ events });
   } catch (err) {
     console.log(err.message);
   }
@@ -158,6 +160,8 @@ const getUpcomingEventsAfterCurrentEventsByCategory = async (req, res) => {
     const events = await Events.find({
       dateStart: { $gt: afterTheseDays },
       category: { $in: tag },
+    }).sort({
+      dateStart: 1,
     });
     if (!events) {
       res.json({

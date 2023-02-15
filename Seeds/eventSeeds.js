@@ -20,6 +20,16 @@ const eventsList = [
     tag: "Community Gathering",
   },
   {
+    title: "Stroll By The Beach",
+    dateStart: "18 Feb 2023",
+    dateEnd: "18 feb 2023 10:30 am",
+    timeString: "7:30 am to 10:30 am",
+    description: "Lorem ipsum dolor sit amet",
+    img: "Lorem ipsum dolor sit",
+    action: "Lorem Link",
+    tag: "Community Gathering",
+  },
+  {
     title: "Garden of Hope - Flower planting",
     dateStart: "19 Feb 2023",
     dateEnd: "19 Feb 2023 2:30 PM",
@@ -31,6 +41,16 @@ const eventsList = [
   },
   {
     title: "Stroll By The Bay",
+    dateStart: "19 Feb 2023",
+    dateEnd: "19 Feb 2023 10:30 AM",
+    timeString: "7:00AM to 10:30AM",
+    description: "Lorem ipsum dolor sit amet",
+    img: "Lorem ipsum dolor sit",
+    action: "Lorem Link",
+    tag: "Community Gathering",
+  },
+  {
+    title: "Stroll By The Shore",
     dateStart: "19 Feb 2023",
     dateEnd: "19 Feb 2023 10:30 AM",
     timeString: "7:00AM to 10:30AM",
