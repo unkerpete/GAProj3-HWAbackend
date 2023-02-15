@@ -4,6 +4,7 @@ const Events = require("../models/events");
 const moment = require("moment-timezone");
 
 const eventsList = require("../Seeds/eventSeeds");
+const fs = require("fs");
 
 // 1. Function for seeding
 const seedEvents = async (req, res) => {
@@ -25,20 +26,26 @@ const createEvent = async (req, res) => {
       dateEnd: req.body.dateEnd,
       timeString: req.body.timeString,
       description: req.body.description,
-      img: req.body.img,
+      img: {
+        data: fs.readFileSync("uploads/" + req.file.filename),
+        contentType: "image/jpg",
+      },
       action: req.body.action,
       tag: req.body.tag,
     });
 
     const savedEvent = await newEvent.save();
+    console.log("image saved");
     res.json({
       message: "Event created successfully",
       createdEvent: savedEvent,
     });
   } catch (error) {
-    console.log(error);
+    console.log("PUT /events/create", error);
+    res.status(400).json({ status: "error", message: error.message });
   }
 };
+
 // 3. Function for reading all, sorted by date of event
 const getAllEvents = async (req, res) => {
   try {
@@ -86,6 +93,7 @@ const getEventsByTagAndDateRange = async (req, res) => {
   }
 };
 
+// FIXME: need to update for img
 // 6. Function for updating events
 const updateEvent = async (req, res) => {
   try {
@@ -98,7 +106,11 @@ const updateEvent = async (req, res) => {
       event.dateEnd = req.body.dateEnd;
       event.timeString = req.body.timeString;
       event.description = req.body.description;
-      event.img = req.body.img;
+      // FIXME: NEED TO DOUBLE CHECK THIS FROM FRONT END. POSTMAN WORKS
+      event.img = {
+        data: fs.readFileSync("uploads/" + req.file.filename),
+        contentType: "image/jpg",
+      };
       event.action = req.body.action;
       event.tag = req.body.tag;
     }
