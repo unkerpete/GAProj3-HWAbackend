@@ -171,7 +171,7 @@ const getUpcomingEventsAfterCurrentEventsByCategory = async (req, res) => {
   try {
     const events = await Events.find({
       dateStart: { $gt: afterTheseDays },
-      category: { $in: tag },
+      tag: { $in: tag },
     }).sort({
       dateStart: 1,
     });
@@ -180,7 +180,30 @@ const getUpcomingEventsAfterCurrentEventsByCategory = async (req, res) => {
         message: "no events of selected tag after 3 days from now",
       });
     }
-    res.json(events);
+    res.json({ events });
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+// 9. Function for Upcoming Events. Can select multiple tags
+const getPastEventsByCategory = async (req, res) => {
+  const today = new Date();
+  const tag = req.body.tag || [];
+
+  try {
+    const events = await Events.find({
+      dateStart: { $lt: today },
+      tag: { $in: tag },
+    }).sort({
+      dateStart: -1,
+    });
+    if (!events) {
+      res.json({
+        message: "no past events",
+      });
+    }
+    res.json({ events });
   } catch (err) {
     console.log(err.message);
   }
@@ -197,4 +220,5 @@ module.exports = {
   deleteEvent,
   getCurrentEventsWithinDateRangeByCategory,
   getUpcomingEventsAfterCurrentEventsByCategory,
+  getPastEventsByCategory,
 };

@@ -14,6 +14,7 @@ const {
   deleteEvent,
   getCurrentEventsWithinDateRangeByCategory,
   getUpcomingEventsAfterCurrentEventsByCategory,
+  getPastEventsByCategory,
 } = require("../controllers/events");
 
 ////////////////////////////
@@ -60,6 +61,9 @@ router.post("/currentevents", getCurrentEventsWithinDateRangeByCategory);
 
 // READ upcoming events by category(ies)
 router.post("/upcomingevents", getUpcomingEventsAfterCurrentEventsByCategory);
+
+// READ upcoming events by category(ies)
+router.post("/pastevents", getPastEventsByCategory);
 
 // export routes for server.js to access
 module.exports = router;
