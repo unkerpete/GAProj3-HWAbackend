@@ -2,6 +2,9 @@
 const express = require("express");
 // import router
 const router = express.Router();
+//import auth
+const auth = require("../middleware/auth");
+
 
 // import functions from controller
 const {
@@ -39,10 +42,10 @@ const upload = multer({ storage: storage });
 router.put("/danger_this_deletes_everything", seedEvents);
 
 // CREATE a single event
-router.put("/create", upload.single("eventImg"), createEvent);
+router.put("/create", auth, upload.single("eventImg"), createEvent);
 
 // READ show all events
-router.get("/showall", getAllEvents);
+router.get("/showall", auth, getAllEvents);
 
 // READ show events within a specified date range
 router.post("/showbyrange", getEventsByDateRange);
@@ -51,10 +54,10 @@ router.post("/showbyrange", getEventsByDateRange);
 router.get("/showbytagrange", getEventsByTagAndDateRange);
 
 // UPDATE event by ID
-router.patch("/update", upload.single("eventImg"), updateEvent);
+router.patch("/update", auth, upload.single("eventImg"), updateEvent);
 
 // DELETE event by ID
-router.delete("/delete", deleteEvent);
+router.delete("/delete", auth, deleteEvent);
 
 // READ current events by category(ies)
 router.post("/currentevents", getCurrentEventsWithinDateRangeByCategory);
