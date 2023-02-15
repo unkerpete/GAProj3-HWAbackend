@@ -61,8 +61,11 @@ const getAllEvents = async (req, res) => {
 // 4. Function for reading a specified number of events based on date range
 const getEventsByDateRange = async (req, res) => {
   try {
-    const startDate = new Date(req.body.startDate);
-    const endDate = new Date(req.body.endDate);
+    const startDate = req.body.startDate;
+    const endDate = req.body.endDate;
+    // const startDate = req.body.startDate;
+    // const endDate = req.body.endDate;
+    console.log(startDate, endDate);
     const events = await Events.find({
       dateStart: { $gte: startDate, $lte: endDate },
     }).sort({
