@@ -5,7 +5,6 @@ const router = express.Router();
 //import auth
 const auth = require("../middleware/auth");
 
-
 // import functions from controller
 const {
   seedEvents,
@@ -23,10 +22,9 @@ const {
 ////////////////////////////
 // Handling Image Events
 const multer = require("multer");
-// const Events = require("../models/events");
 
 const storage = multer.diskStorage({
-  // declare the destination for the file in client side
+  // declare the destination for the file in server side
   destination: (req, file, cb) => {
     cb(null, "uploads");
   },
