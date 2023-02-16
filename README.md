@@ -64,13 +64,25 @@ The following endpoints are available:
 </br>
 `/events/pastevents` - retrieves specified events by tag(category) that have already occured
 
-## Examples of payload and responses for some endpoints
+## Usage examples for some endpoints
 
-`/transport/create` - payload/req.body example
+`/transport/create` - body required to submit a form
 </br>
-<img width="346" alt="image" src="https://user-images.githubusercontent.com/118168304/219416465-ebafb738-8f0f-4ecb-aacc-1ac1338d3fc5.png">
+<img width="363" alt="image" src="https://user-images.githubusercontent.com/118168304/219418889-13c1b843-389d-4a42-b00a-fd5a661af033.png">
 
-`/transport/showall` - response example
+`/transport/showall` - response example when fetching this api
 </br>
-<img width="245" alt="image" src="https://user-images.githubusercontent.com/118168304/219416794-29b59531-c8dd-43af-ade9-d065aed9b1d3.png">
+<img width="373" alt="image" src="https://user-images.githubusercontent.com/118168304/219419039-f6ce8e83-6263-4665-817e-12a696c11cd7.png">
+
+`/events/currentevents`
+</br>
+body required when fetching data - frontend can decide what current is by modifying withinTheseDays variable, and also filter events by using the Tag array
+</br>
+<img width="448" alt="image" src="https://user-images.githubusercontent.com/118168304/219419337-dff9cc79-e202-4888-a0ee-0e7eaa5c9a90.png">
+</br>
+response 
+</br>
+<img width="308" alt="image" src="https://user-images.githubusercontent.com/118168304/219419987-93b1f50d-b557-4d5d-ba5e-958794e74b43.png">
+
+
 
