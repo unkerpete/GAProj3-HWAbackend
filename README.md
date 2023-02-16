@@ -74,6 +74,12 @@ The following endpoints are available:
 </br>
 <img width="373" alt="image" src="https://user-images.githubusercontent.com/118168304/219419039-f6ce8e83-6263-4665-817e-12a696c11cd7.png">
 
+`/events/create`
+</br>
+This is the body required to create an event.
+</br>
+<img width="272" alt="image" src="https://user-images.githubusercontent.com/118168304/219424146-2fe0d2e7-1a75-46dc-b00a-4cbf5c2d61d9.png">
+
 `/events/showbytagrange`
 </br>
 This is the body required when calling this API. The frontend can decide the range by modifying start and end date.
