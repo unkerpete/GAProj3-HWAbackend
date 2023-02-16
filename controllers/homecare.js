@@ -8,7 +8,7 @@ const createHomeCareEnquiry = async (req, res) => {
       fullName: req.body.fullName,
       email: req.body.email,
       contact: req.body.contact,
-      service: req.body.service,
+      selection: req.body.selection,
       message: req.body.message,
     });
     // return to frontend with success response

@@ -8,7 +8,7 @@ const createContact = async (req, res) => {
       fullName: req.body.fullName,
       email: req.body.email,
       contact: req.body.contact,
-      enquiry: req.body.enquiry,
+      selection: req.body.selection,
       message: req.body.message,
     });
     // return to frontend with success response
