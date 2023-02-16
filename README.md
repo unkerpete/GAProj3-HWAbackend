@@ -48,7 +48,7 @@ The following endpoints are available:
 </br>
 `/events/danger_this_deletes_everything` - deletes all events and re-seeds with sample data
 </br>
-/events/showall - retrieves all events
+`/events/showall` - retrieves all events
 </br>
 `/events/showbyrange` - retrieves all events in a specified date range
 </br>
@@ -64,6 +64,13 @@ The following endpoints are available:
 </br>
 `/events/pastevents` - retrieves specified events by tag(category) that have already occured
 
-## Examples of request body and responses
+## Examples of payload and responses for some endpoints
 
-`/r
+`/transport/create` - creates a transport enquiry form entry in database
+</br>
+<img width="346" alt="image" src="https://user-images.githubusercontent.com/118168304/219416465-ebafb738-8f0f-4ecb-aacc-1ac1338d3fc5.png">
+</br>
+`/transport/showall` - retrieves all transport enquiries from database
+</br>
+<img width="245" alt="image" src="https://user-images.githubusercontent.com/118168304/219416794-29b59531-c8dd-43af-ade9-d065aed9b1d3.png">
+
