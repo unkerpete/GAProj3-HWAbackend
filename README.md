@@ -66,13 +66,23 @@ The following endpoints are available:
 
 ## Usage examples for some endpoints
 
-`/transport/create` - ody required to submit a form
+`/transport/create` - body required to submit a form
 </br>
 <img width="363" alt="image" src="https://user-images.githubusercontent.com/118168304/219418889-13c1b843-389d-4a42-b00a-fd5a661af033.png">
 
 `/transport/showall` - response example when fetching this api
 </br>
 <img width="373" alt="image" src="https://user-images.githubusercontent.com/118168304/219419039-f6ce8e83-6263-4665-817e-12a696c11cd7.png">
+
+`/events/showbytagrange`
+</br>
+This is the body required when calling this API. The frontend can decide the range by modifying start and end date.
+</br>
+<img width="179" alt="image" src="https://user-images.githubusercontent.com/118168304/219421817-fd13fe6a-f495-4ae4-a926-16bd0ab1ec8e.png">
+</br>
+response
+</br>
+<img width="309" alt="image" src="https://user-images.githubusercontent.com/118168304/219421920-1b9e360f-b610-4272-9879-a5663ebbfb3e.png">
 
 `/events/currentevents`
 </br>
