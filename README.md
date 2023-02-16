@@ -66,7 +66,7 @@ The following endpoints are available:
 
 ## Usage examples for some endpoints
 
-`/transport/create` - body required to submit a form
+`/transport/create` - ody required to submit a form
 </br>
 <img width="363" alt="image" src="https://user-images.githubusercontent.com/118168304/219418889-13c1b843-389d-4a42-b00a-fd5a661af033.png">
 
@@ -76,7 +76,7 @@ The following endpoints are available:
 
 `/events/currentevents`
 </br>
-body required when fetching data - frontend can decide what current is by modifying withinTheseDays variable, and also filter events by using the Tag array
+This is the body required when calling this API. The frontend can decide what current is by modifying withinTheseDays variable, and also filter events by using the Tag array.
 </br>
 <img width="448" alt="image" src="https://user-images.githubusercontent.com/118168304/219419337-dff9cc79-e202-4888-a0ee-0e7eaa5c9a90.png">
 </br>
