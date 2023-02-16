@@ -20,37 +20,49 @@ For connection to our database, you will need to include these variables in your
 
 The following endpoints are available:
 
-/subs/create - creates a subscription email entry in database
+`/subs/create` - creates a subscription email entry in database
 </br>
-/subs/showall - retrieves all subscription emails from database
+`/subs/showall` - retrieves all subscription emails from database
 
-/transport/create - creates a transport enquiry form entry in database
+`/transport/create` - creates a transport enquiry form entry in database
 </br>
-/transport/showall - retrieves all transport enquiries from database
+`/transport/showall` - retrieves all transport enquiries from database
 
-/homecare/create - creates a homecare enquiry form entry in database
+`/homecare/create` - creates a homecare enquiry form entry in database
 </br>
-/homecare/showall - retrieves all homecare enquiries from database
+`/homecare/showall` - retrieves all homecare enquiries from database
 
-/volunteer/create - creates a volunteer enquiry form entry in database
+`/volunteer/create` - creates a volunteer enquiry form entry in database
 </br>
-/volunteer/showall - retrieves all volunteer enquiries from database
+`/volunteer/showall` - retrieves all volunteer enquiries from database
  
-/contact/create - creates a contact enquiry form entry in database
+`/contact/create` - creates a contact enquiry form entry in database
 </br>
-/contact/showall - retrieves all contact enquiries from database
+`/contact/showall` - retrieves all contact enquiries from database
 
-/user/create - creates an admin user 
+`/user/create` - creates an admin user 
 </br>
-/user/showall - retrieves all admin users details from database
+`/user/showall` - retrieves all admin users details from database
 
-/events/create - creates an admin user 
+`/events/create` - creates an events
 </br>
-/events/showall - retrieves all admin users details from database
+`/events/danger_this_deletes_everything` - deletes all events and re-seeds with sample data
 </br>
-/events/showall - retrieves all admin users details from database
+/events/showall - retrieves all events
 </br>
-/events/showall - retrieves all admin users details from database
+`/events/showbyrange` - retrieves all events in a specified date range
+</br>
+`/events/showbytagrange` - retrieves events of a specified tag(category) in a specified date range 
+</br>
+`/events/update` - updates an event
+</br>
+`/events/delete` - deletes an event
+</br>
+`/events/currentevents` - retrieves specified events by tag(category) that are occuring in the next number of specified days 
+</br>
+`/events/upcomingevents` - retrieves specified events by tag(category) that are occuring after the next number of specified days
+</br>
+`/events/pastevents` - retrieves specified events by tag(category) that have already occured
 
 ## Examples of request body and responses
 
