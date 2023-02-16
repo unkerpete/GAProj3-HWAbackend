@@ -44,4 +44,14 @@ The following endpoints are available:
 </br>
 /user/showall - retrieves all admin users details from database
 
+/events/create - creates an admin user 
+</br>
+/events/showall - retrieves all admin users details from database
+</br>
+/events/showall - retrieves all admin users details from database
+</br>
+/events/showall - retrieves all admin users details from database
 
+## Examples of request body and responses
+
+`/r
