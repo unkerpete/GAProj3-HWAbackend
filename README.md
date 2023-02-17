@@ -100,6 +100,14 @@ response
 </br>
 <img width="308" alt="image" src="https://user-images.githubusercontent.com/118168304/219419987-93b1f50d-b557-4d5d-ba5e-958794e74b43.png">
 
+## JWT authentication middleware to protect admin endpoints
+
+1. Created middleware function to protect admin endpoints
+![jwtAuthMiddleware](readmeImages/jwtAuthMiddleware.PNG)
+
+2. JWT Authentication added to the CRUD routes
+![Routes](readmeImages/RoutesWithAuth.PNG)
+
 ## Image File Handling on Server Side
 
 > This portion is a continuation of the frontend.\
@@ -183,4 +191,21 @@ const newEvent = new Events({
   tag: req.body.tag,
 });
 ```
+
+## Contributors
+
+### SEI Team
+
+1. [Peter Kuang](https://github.com/unkerpete)
+2. [Izhar Bin Jumadi](https://github.com/dedhack)
+3. [Muhammed Firdaus](https://github.com/mfirdausbn)
+4. [Tyler Wong](https://github.com/TylerWong92)
+5. [Chen Shujun](https://github.com/chen-shujun23)
+
+### UXDI Team
+
+1. [Luann See](https://www.linkedin.com/in/luann-see/?originalSubdomain=sg)
+2. [Nelton Tan](https://www.linkedin.com/in/nelton-tan-63b4b4122/?originalSubdomain=sg)
+3. [Grace Duong](https://www.linkedin.com/in/grace-duong-0577a877/?originalSubdomain=sg)
+4. [Tay Jiaqi](https://www.linkedin.com/in/jiaqitay/)
 
