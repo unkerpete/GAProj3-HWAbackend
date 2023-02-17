@@ -64,9 +64,6 @@ The following endpoints are available:
 </br>
 `/events/pastevents` - retrieves specified events by tag(category) that have already occured
 
-
-
-
 ## Usage examples for some endpoints
 
 `/transport/create` - body required to submit a form
