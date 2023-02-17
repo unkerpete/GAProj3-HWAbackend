@@ -1,10 +1,6 @@
-// import schema from models
-const Events = require("../models/events");
-
-const moment = require("moment-timezone");
-
-const eventsList = require("../Seeds/eventSeeds");
-const fs = require("fs");
+const Events = require("../models/events");  // import schema from models
+const eventsList = require("../Seeds/eventSeeds"); // import seeds
+const fs = require("fs"); // import filesystem module
 
 // 1. Function for seeding
 const seedEvents = async (req, res) => {
